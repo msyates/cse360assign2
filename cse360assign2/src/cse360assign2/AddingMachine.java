@@ -11,16 +11,21 @@
 
 package cse360assign2;
 
+import java.io.*;
+import java.util.*;
 
 public class AddingMachine {
 	
 	private int total;
+	private ArrayList<String> transaction;
 	
 	/**
 	 * Class Constructor
 	 */
 	public AddingMachine () {
 		total = 0;  // not needed - included for clarity
+		transaction = new ArrayList<String>();
+		transaction.add("0");
 	}
 	
 	
@@ -30,7 +35,7 @@ public class AddingMachine {
 	 * @return the int stored in getTotal
 	 */
 	public int getTotal () {
-		return 0;
+		return this.total;
 	}
 	
 	/**
@@ -39,7 +44,9 @@ public class AddingMachine {
 	 * @param value user input to be added to total
 	 */
 	public void add (int value) {
-		
+		this.total += value;
+		transaction.add(" + ");
+		transaction.add(Integer.toString(value));
 	}
 	
 	/**
@@ -48,7 +55,9 @@ public class AddingMachine {
 	 * @param value user input to be subtracted from total
 	 */
 	public void subtract (int value) {
-		
+		this.total -= value;
+		transaction.add(" - ");
+		transaction.add(Integer.toString(value));
 	}
 	
 	/**
@@ -57,6 +66,11 @@ public class AddingMachine {
 	 * @return string of user inputs
 	 */
 	public String toString () {
+		int loopCount;
+		for(loopCount = 0; loopCount <= transaction.size(); loopCount++) {
+			System.out.print(transaction.get(loopCount));
+		}
+		System.out.println();
 		return "";
 	}
 	
@@ -64,7 +78,8 @@ public class AddingMachine {
 	 * Method to clear the current use
 	 */
 	public void clear() {
-		
+		transaction.clear();
+		transaction.add("0");
 	}
 	
 }
