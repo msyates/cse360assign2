@@ -67,7 +67,7 @@ public class AddingMachine {
 	 */
 	public String toString () {
 		int loopCount;
-		for(loopCount = 0; loopCount <= transaction.size(); loopCount++) {
+		for(loopCount = 0; loopCount < transaction.size(); loopCount++) {
 			System.out.print(transaction.get(loopCount));
 		}
 		System.out.println();
@@ -80,6 +80,7 @@ public class AddingMachine {
 	public void clear() {
 		transaction.clear();
 		transaction.add("0");
+		this.total = 0;
 	}
 	
 }
